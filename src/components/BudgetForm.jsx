@@ -38,9 +38,7 @@ const BudgetForm = () => {
         setErrorMessage('');
 
         try {
-            // Replaced mock api with Formspree Endpoint
-            // You should replace "SEU_ENDPOINT_AQUI" with your actual Formspree ID
-            const response = await fetch("https://formspree.io/f/mbllyndk", {
+            const response = await fetch("https://formspree.io/f/xreadaen", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -61,7 +59,7 @@ const BudgetForm = () => {
     };
 
     return (
-        <section className="py-24 bg-black relative" id="revendedores">
+        <section className="py-12 md:py-24 bg-black relative" id="revendedores">
             <div className="container mx-auto px-6 max-w-4xl">
                 <RevealOnScroll>
                     <div className="text-center mb-16">

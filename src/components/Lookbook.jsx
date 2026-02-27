@@ -59,12 +59,12 @@ const Lookbook = () => {
     const current = models[activeModel];
 
     return (
-        <section className="py-24 bg-black" id="produtos">
+        <section className="py-12 md:py-24 bg-black" id="produtos">
             <div className="container mx-auto px-6">
                 <RevealOnScroll>
                     <div className="text-center mb-16">
                         <span className="text-accent tracking-widest uppercase text-sm font-bold">Catálogo B2B</span>
-                        <h2 className="text-4xl md:text-5xl font-black text-white mt-4 mb-12">NOSSAS LINHAS DE PRODUÇÃO</h2>
+                        <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white mt-3 mb-8 md:mb-12">NOSSAS LINHAS DE PRODUÇÃO</h2>
 
                         {/* Model Selector Tabs */}
                         <div className="flex flex-wrap justify-center gap-4">
@@ -81,10 +81,10 @@ const Lookbook = () => {
                         </div>
                     </div>
 
-                    <div className="flex flex-col lg:flex-row gap-16 items-center">
+                    <div className="flex flex-col lg:flex-row gap-8 md:gap-16 items-center">
                         {/* Gallery Side */}
                         <div className="w-full lg:w-1/2">
-                            <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-neutral-900 group">
+                            <div className="relative aspect-[3/4] max-h-[420px] sm:max-h-none overflow-hidden rounded-lg bg-neutral-900 group">
                                 <img
                                     src={current.images[activeImage]}
                                     alt={current.name}
@@ -134,7 +134,7 @@ const Lookbook = () => {
                                     <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">Venda Exclusiva</p>
                                     <p className="text-white text-xl font-bold">Atacado / Lote</p>
                                 </div>
-                                <a href="#revendedores" className="flex-1 text-center bg-white text-black font-bold uppercase py-4 hover:bg-accent transition-colors duration-300">
+                                <a href="#budget" className="flex-1 text-center bg-white text-black font-bold uppercase py-4 hover:bg-accent transition-colors duration-300">
                                     Receber Tabela de Atacado
                                 </a>
                             </div>

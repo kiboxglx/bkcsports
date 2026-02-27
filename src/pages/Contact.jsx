@@ -7,19 +7,20 @@ const Contact = () => {
     return (
         <div className="pt-32 pb-24 bg-black min-h-screen">
             <SEO
-                title="Orçamento de Camisetas Múltiplas | Kits de Corrida"
-                description="Solicite um orçamento para o seu evento esportivo ou assessoria. Preços progressivos de atacado e entrega garantida para o seu kit de corrida."
-                keywords="camisetas para corrida atacado, fornecedor de kit corrida, camisas de poliamida para eventos, uniformes para assessorias esportivas, camisetas para maratonas, fábrica de roupas esportivas"
+                title="Orçamento Camiseta de Poliamida | Kits de Corrida Atacado"
+                description="Solicite orçamento de camisetas de poliamida personalizadas para seu evento ou assessoria. Preços progressivos de atacado, entrega garantida, arte grátis."
+                keywords="orçamento camiseta poliamida, camiseta corrida atacado, kit corrida personalizado, fornecedor camiseta esportiva"
+                canonical="/contato-camiseta-poliamida"
             />
             <div className="container mx-auto px-6">
                 <div className="flex flex-col lg:flex-row gap-16">
                     <div className="w-full lg:w-1/2">
                         <RevealOnScroll>
-                            <h1 className="text-5xl md:text-7xl font-black mb-8 uppercase tracking-tighter">
-                                Fale com a <br /><span className="text-accent underline decoration-accent/20 underline-offset-8">Fábrica</span>
+                            <h1 className="text-3xl sm:text-5xl md:text-7xl font-black mb-6 sm:mb-8 uppercase tracking-tighter">
+                                Orçamento de <br /><span className="text-accent underline decoration-accent/20 underline-offset-8">Camiseta de Poliamida</span>
                             </h1>
-                            <p className="text-gray-400 text-xl mb-12">
-                                Estamos prontos para atender sua assessoria ou evento com a agilidade que você precisa.
+                            <p className="text-gray-400 text-base sm:text-xl mb-8 sm:mb-12">
+                                Kits personalizados para corridas, maratonas e eventos corporativos. Atendimento B2B especializado.
                             </p>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">

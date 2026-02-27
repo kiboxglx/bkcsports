@@ -6,13 +6,15 @@ const About = () => {
     return (
         <div className="pt-32 pb-24 bg-black min-h-screen">
             <SEO
-                title="A Fábrica por Trás dos Grandes Eventos"
-                description="Conheça a infraestrutura da BKC Sports. Especialistas na produção em larga escala de camisetas esportivas premium para maratonas e assessorias em todo o Brasil."
+                title="Fábrica de Camiseta de Poliamida | Quem Somos"
+                description="Conheça a BKC Sports — fábrica especializada em camisetas de poliamida personalizadas para corridas, maratonas e eventos corporativos. Fornecimento B2B para todo o Brasil."
+                keywords="fábrica camiseta poliamida, fornecedor camiseta corrida, BKC Sports, fábrica uniformes esportivos"
+                canonical="/quem-somos-nos"
             />
             <div className="container mx-auto px-6 max-w-4xl">
                 <RevealOnScroll>
-                    <h1 className="text-5xl md:text-7xl font-black mb-12 uppercase tracking-tighter">
-                        Nossa <span className="text-accent">Essência</span>
+                    <h1 className="text-3xl sm:text-5xl md:text-7xl font-black mb-8 sm:mb-12 uppercase tracking-tighter leading-tight">
+                        Fábrica de <span className="text-accent">Camiseta de Poliamida</span> para Corrida
                     </h1>
 
                     <div className="space-y-8 text-gray-300 text-xl leading-relaxed">

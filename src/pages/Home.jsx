@@ -1,7 +1,7 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import SocialProof from '../components/SocialProof';
-import SpecsGrid from '../components/SpecsGrid';
+import PoliamidaTech from '../components/PoliamidaTech';
 import Lookbook from '../components/Lookbook';
 import SizeTable from '../components/SizeTable';
 import ImageGallery from '../components/ImageGallery';
@@ -13,12 +13,15 @@ const Home = () => {
     return (
         <>
             <SEO
-                title="Fornecedor Premium de Camisetas para Corrida"
-                description="Garanta a qualidade do kit do seu evento. Camisetas de poliamida com tecnologia anti-odor e proteção UV50+ direto da fábrica para organizadores de corrida."
+                title="Fornecedor de Camiseta de Poliamida para Corrida no Atacado"
+                description="Fabricante B2B de camisetas de poliamida personalizadas para kits de corrida, maratonas e eventos esportivos. Sublimação full print, pedido mínimo por lote, entrega para todo o Brasil."
+                keywords="camiseta de poliamida, camiseta poliamida atacado, kit corrida personalizado, camiseta corrida personalizada, uniforme esportivo atacado, fornecedor camiseta maratona"
+                canonical="/"
+                schemaType="product"
             />
             <Hero />
             <SocialProof />
-            <SpecsGrid />
+            <PoliamidaTech />
             <Lookbook />
             <SizeTable />
             <ImageGallery />

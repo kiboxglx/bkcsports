@@ -30,7 +30,7 @@ const ImageGallery = () => {
     ];
 
     return (
-        <section className="py-24 bg-neutral-900" id="galeria">
+        <section className="py-12 md:py-24 bg-neutral-900" id="galeria">
             <div className="container mx-auto px-6">
                 <RevealOnScroll>
                     <div className="text-center max-w-3xl mx-auto mb-16">

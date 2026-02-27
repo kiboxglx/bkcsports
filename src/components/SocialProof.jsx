@@ -4,7 +4,7 @@ import RevealOnScroll from './RevealOnScroll';
 
 const SocialProof = () => {
     return (
-        <section className="py-24 bg-black relative overflow-hidden">
+        <section className="py-12 md:py-24 bg-black relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-accent/5 skew-x-12 blur-3xl rounded-full translate-x-1/2"></div>
 

@@ -27,8 +27,8 @@ const Assessments = () => {
     ];
 
     return (
-        <section className="py-24 bg-neutral-900 relative" id="assessments">
-            <div className="absolute inset-0 bg-[url('/images/image_5.jpg')] bg-cover bg-center opacity-10 mix-blend-overlay pointer-events-none"></div>
+        <section className="py-24 bg-neutral-900 relative" id="time">
+            <div className="absolute inset-0 bg-[url('/images/bkc_camisa_1_lifestyle_action.png')] bg-cover bg-center opacity-15 mix-blend-overlay pointer-events-none"></div>
 
             <div className="container mx-auto px-6 relative z-10">
                 <RevealOnScroll>

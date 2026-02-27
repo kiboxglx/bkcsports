@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
-import { submitBudget } from '../services/api';
 import RevealOnScroll from './RevealOnScroll';
 
 const BudgetForm = () => {
@@ -39,17 +38,30 @@ const BudgetForm = () => {
         setErrorMessage('');
 
         try {
-            await submitBudget(formData);
-            setStatus('success');
-            setFormData({ name: '', email: '', type: 'assessoria', quantity: '', message: '' });
+            // Replaced mock api with Formspree Endpoint
+            // You should replace "SEU_ENDPOINT_AQUI" with your actual Formspree ID
+            const response = await fetch("https://formspree.io/f/mbllyndk", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                setStatus('success');
+                setFormData({ name: '', email: '', type: 'assessoria', quantity: '', message: '' });
+            } else {
+                throw new Error("Erro de resposta do servidor Formspree.");
+            }
         } catch (err) {
             setStatus('error');
-            setErrorMessage(err.message || "Ocorreu um erro.");
+            setErrorMessage("Não foi possível enviar o formulário no momento. Tente novamente mais tarde.");
         }
     };
 
     return (
-        <section className="py-24 bg-black relative" id="budget">
+        <section className="py-24 bg-black relative" id="revendedores">
             <div className="container mx-auto px-6 max-w-4xl">
                 <RevealOnScroll>
                     <div className="text-center mb-16">

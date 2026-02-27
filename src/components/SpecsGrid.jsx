@@ -31,7 +31,7 @@ const SpecsGrid = () => {
     ];
 
     return (
-        <section className="py-24 bg-neutral-900" id="technology">
+        <section className="py-24 bg-neutral-900" id="tecnologia">
             <div className="container mx-auto px-6">
                 <RevealOnScroll>
                     <div className="text-center max-w-3xl mx-auto mb-16">
@@ -43,28 +43,46 @@ const SpecsGrid = () => {
                     </div>
                 </RevealOnScroll>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {specs.map((spec, index) => (
-                        <RevealOnScroll key={spec.id} delay={index * 100}>
-                            <div className="group p-8 bg-black border border-white/5 hover:border-accent transition-all duration-300 rounded-xl relative overflow-hidden h-full">
-                                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-white">
-                                    {spec.icon}
+                <div className="flex flex-col lg:flex-row gap-12 items-center">
+                    <div className="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        {specs.map((spec, index) => (
+                            <RevealOnScroll key={spec.id} delay={index * 100}>
+                                <div className="group p-8 bg-black border border-white/5 hover:border-accent transition-all duration-300 rounded-xl relative overflow-hidden h-full">
+                                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-white">
+                                        {spec.icon}
+                                    </div>
+                                    <div className="text-accent mb-6 group-hover:scale-110 transition-transform duration-300 origin-left">
+                                        {spec.icon}
+                                    </div>
+                                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
+                                        {spec.title}
+                                    </h3>
+                                    <p className="text-gray-400 text-sm leading-relaxed">
+                                        {spec.desc}
+                                    </p>
                                 </div>
+                            </RevealOnScroll>
+                        ))}
+                    </div>
 
-                                <div className="text-accent mb-6 group-hover:scale-110 transition-transform duration-300 origin-left">
-                                    {spec.icon}
+                    <div className="w-full lg:w-1/2 flex flex-col gap-6">
+                        <RevealOnScroll delay={200}>
+                            <div className="relative rounded-2xl overflow-hidden aspect-video border border-white/10 group">
+                                <img src="/images/bkc_camisa_1_macro.png" alt="Tecnologia do Tecido Macro" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                                    <span className="text-white font-bold tracking-wider uppercase text-sm">Tecido Microperfurado de Alta Performance</span>
                                 </div>
-
-                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
-                                    {spec.title}
-                                </h3>
-
-                                <p className="text-gray-400 text-sm leading-relaxed">
-                                    {spec.desc}
-                                </p>
                             </div>
                         </RevealOnScroll>
-                    ))}
+                        <RevealOnScroll delay={400}>
+                            <div className="relative rounded-2xl overflow-hidden aspect-video border border-white/10 group shadow-lg">
+                                <img src="/images/bkc_camisa_1_back_view.png" alt="Vista Superior e Acabamento Premium" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                                    <span className="text-white font-bold tracking-wider uppercase text-sm">Costuras Flat Premium Sem Atrito</span>
+                                </div>
+                            </div>
+                        </RevealOnScroll>
+                    </div>
                 </div>
             </div>
         </section>

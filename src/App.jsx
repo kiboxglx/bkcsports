@@ -15,20 +15,32 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import CamisetaPoliamida from './pages/CamisetaPoliamida';
+import Orcamento from './pages/Orcamento';
 
-// Scroll to top on route change
+// Scroll to top on route change.
+// Hash navigation across routes precisa de um pequeno delay porque
+// o BudgetForm ainda nao montou no momento em que o useEffect dispara.
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
     if (!hash) {
       window.scrollTo(0, 0);
-    } else {
-      const element = document.getElementById(hash.replace('#', ''));
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      return;
     }
+
+    const id = hash.replace('#', '');
+    const tryScroll = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+
+    // Tenta imediato + retry com delay (cobre cross-route navigation)
+    tryScroll();
+    const timeout = setTimeout(tryScroll, 150);
+    return () => clearTimeout(timeout);
   }, [pathname, hash]);
 
   return null;
@@ -58,7 +70,7 @@ function App() {
             <Route path="/quem-somos-nos" element={<About />} />
             <Route path="/contato-camiseta-poliamida" element={<Contact />} />
             <Route path="/contato" element={<Contact />} />
-            <Route path="/orcamento" element={<Home />} />
+            <Route path="/orcamento" element={<Orcamento />} />
             <Route path="/produtos" element={<Home />} />
             {/* SEO — Camiseta de Poliamida */}
             <Route path="/camiseta-de-poliamida" element={<CamisetaPoliamida />} />

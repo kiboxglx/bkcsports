@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import RevealOnScroll from './RevealOnScroll';
+import BudgetCTA from './BudgetCTA';
 
 const Lookbook = () => {
     const models = [
@@ -134,9 +135,9 @@ const Lookbook = () => {
                                     <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">Venda Exclusiva</p>
                                     <p className="text-white text-xl font-bold">Atacado / Lote</p>
                                 </div>
-                                <a href="#budget" className="flex-1 text-center bg-white text-black font-bold uppercase py-4 hover:bg-accent transition-colors duration-300">
+                                <BudgetCTA className="flex-1 text-center bg-white text-black font-bold uppercase py-4 hover:bg-accent transition-colors duration-300">
                                     Receber Tabela de Atacado
-                                </a>
+                                </BudgetCTA>
                             </div>
                         </div>
 

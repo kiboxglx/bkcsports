@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import BudgetCTA from './BudgetCTA';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -76,12 +77,12 @@ const Navbar = () => {
 
                     <div className="flex items-center gap-4">
                         {/* Desktop CTA */}
-                        <a
-                            href="#revendedores"
+                        <BudgetCTA
+                            onClick={() => setIsMenuOpen(false)}
                             className="hidden lg:block px-6 py-3 bg-accent text-black font-black uppercase tracking-wider rounded-sm hover:scale-105 hover:bg-white transition-all duration-300"
                         >
                             SOLICITAR ORÇAMENTO
-                        </a>
+                        </BudgetCTA>
 
                         {/* Mobile Hamburger */}
                         <button
@@ -128,13 +129,12 @@ const Navbar = () => {
                                 </a>
                             )
                         ))}
-                        <a
-                            href="#revendedores"
+                        <BudgetCTA
                             onClick={() => setIsMenuOpen(false)}
                             className="mt-4 w-full text-center py-4 bg-accent text-black font-black uppercase tracking-wider hover:bg-white transition-colors duration-300"
                         >
                             SOLICITAR ORÇAMENTO
-                        </a>
+                        </BudgetCTA>
                     </nav>
                 </div>
             </header>

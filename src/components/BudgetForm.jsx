@@ -94,14 +94,14 @@ const BudgetForm = () => {
             } else {
                 throw new Error("Erro de resposta do servidor Formspree.");
             }
-        } catch (err) {
+        } catch {
             setStatus('error');
             setErrorMessage("Não foi possível enviar o formulário no momento. Tente novamente mais tarde.");
         }
     };
 
     return (
-        <section className="py-12 md:py-24 bg-black relative" id="revendedores">
+        <section className="py-12 md:py-24 bg-black relative scroll-mt-24" id="orcamento">
             <div className="container mx-auto px-6 max-w-4xl">
                 <RevealOnScroll>
                     <div className="text-center mb-16">

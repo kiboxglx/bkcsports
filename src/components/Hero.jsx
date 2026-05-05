@@ -1,5 +1,6 @@
 import React from 'react';
 import useScrollReveal from '../hooks/useScrollReveal';
+import BudgetCTA from './BudgetCTA';
 
 const Hero = () => {
     const [ref, isVisible] = useScrollReveal();
@@ -27,9 +28,9 @@ const Hero = () => {
                     Camisetas de poliamida de alta performance no atacado. O kit que os atletas vão querer usar, do evento à rotina.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                    <a href="#budget" className="px-10 py-4 bg-accent text-black font-bold uppercase tracking-wider hover:bg-white hover:scale-105 transition-all duration-300 min-w-[220px]">
+                    <BudgetCTA className="px-10 py-4 bg-accent text-black font-bold uppercase tracking-wider hover:bg-white hover:scale-105 transition-all duration-300 min-w-[220px]">
                         Solicitar Orçamento
-                    </a>
+                    </BudgetCTA>
                     <a href="#tecnologia" className="px-10 py-4 border border-white/30 text-white font-bold uppercase tracking-wider hover:bg-white/10 hover:border-white transition-all duration-300 min-w-[220px] backdrop-blur-md">
                         Conhecer Qualidade
                     </a>

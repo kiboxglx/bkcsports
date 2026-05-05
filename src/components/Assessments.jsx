@@ -1,6 +1,7 @@
 import React from 'react';
 import { Users, Calendar, Award, TrendingUp } from 'lucide-react';
 import RevealOnScroll from './RevealOnScroll';
+import BudgetCTA from './BudgetCTA';
 
 const Assessments = () => {
     const benefits = [
@@ -43,9 +44,9 @@ const Assessments = () => {
                                 A BKC oferece infraestrutura completa para vestir seus atletas com a mesma tecnologia dos campeões.
                                 Elimine a dor de cabeça com fornecedores e foque nos treinos.
                             </p>
-                            <a href="#budget" className="inline-block border-b-2 border-accent text-white font-bold pb-1 hover:text-accent transition-colors">
+                            <BudgetCTA className="inline-block border-b-2 border-accent text-white font-bold pb-1 hover:text-accent transition-colors">
                                 Solicitar contato comercial &rarr;
-                            </a>
+                            </BudgetCTA>
                         </div>
 
                         <div className="w-full lg:w-1/2 grid grid-cols-2 gap-3 lg:gap-6">

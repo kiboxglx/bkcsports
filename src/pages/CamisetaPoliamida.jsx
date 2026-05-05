@@ -1,6 +1,7 @@
 import React from 'react';
 import SEO from '../components/SEO';
 import BudgetForm from '../components/BudgetForm';
+import BudgetCTA from '../components/BudgetCTA';
 import RevealOnScroll from '../components/RevealOnScroll';
 import { CheckCircle, Zap, Droplets, Wind } from 'lucide-react';
 
@@ -31,9 +32,9 @@ const CamisetaPoliamida = () => {
                     <p className="text-gray-300 text-xl mb-8 max-w-2xl mx-auto">
                         Produção em lote para organizadores de corrida, assessorias esportivas e eventos. Design exclusivo com patrocinadores incluído.
                     </p>
-                    <a href="#budget" className="inline-block bg-accent text-black font-black uppercase px-10 py-4 text-lg hover:bg-white transition-colors duration-300">
+                    <BudgetCTA className="inline-block bg-accent text-black font-black uppercase px-10 py-4 text-lg hover:bg-white transition-colors duration-300">
                         Solicitar Orçamento
-                    </a>
+                    </BudgetCTA>
                 </div>
             </section>
 
@@ -82,9 +83,9 @@ const CamisetaPoliamida = () => {
                                         </li>
                                     ))}
                                 </ul>
-                                <a href="#budget" className="inline-block border-2 border-white text-white font-bold uppercase px-8 py-3 hover:bg-accent hover:border-accent hover:text-black transition-all duration-300">
+                                <BudgetCTA className="inline-block border-2 border-white text-white font-bold uppercase px-8 py-3 hover:bg-accent hover:border-accent hover:text-black transition-all duration-300">
                                     Solicitar Tabela de Atacado →
-                                </a>
+                                </BudgetCTA>
                             </div>
                         </div>
                     </RevealOnScroll>

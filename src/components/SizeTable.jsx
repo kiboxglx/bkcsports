@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import RevealOnScroll from './RevealOnScroll';
 import { Ruler } from 'lucide-react';
+import BudgetCTA from './BudgetCTA';
 
 const SizeTable = () => {
     const [activeTab, setActiveTab] = useState('masculina');
@@ -113,12 +114,9 @@ const SizeTable = () => {
                             <div className="w-2 h-2 rounded-full bg-accent shrink-0"></div>
                             <p className="text-xs lg:text-sm font-medium uppercase tracking-wider">Qualidade de Fábrica BKC Sports — Precisão em cada fibra.</p>
                         </div>
-                        <a
-                            href="#revendedores"
-                            className="text-accent hover:underline font-bold text-xs lg:text-sm tracking-widest uppercase whitespace-nowrap"
-                        >
+                        <BudgetCTA className="text-accent hover:underline font-bold text-xs lg:text-sm tracking-widest uppercase whitespace-nowrap">
                             Fale com um especialista
-                        </a>
+                        </BudgetCTA>
                     </div>
                 </RevealOnScroll>
             </div>

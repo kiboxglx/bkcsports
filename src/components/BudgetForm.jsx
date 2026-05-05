@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import RevealOnScroll from './RevealOnScroll';
+import { getAttributionFlat } from '../services/attribution';
+import { track, trackCustomEvent } from '../services/tracking';
+
+const ESTIMATED_TICKET_BRL = 35;
+const QUALIFIED_LEAD_MIN_QTY = 30;
 
 const BudgetForm = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        phone: '',
         type: 'assessoria', // assessoria, evento, loja
         quantity: '',
         message: ''
@@ -22,6 +28,8 @@ const BudgetForm = () => {
     const validate = () => {
         if (!formData.name.trim()) return "Nome é obrigatório.";
         if (!formData.email.includes('@')) return "Email inválido.";
+        const phoneDigits = formData.phone.replace(/\D/g, '');
+        if (phoneDigits.length < 10 || phoneDigits.length > 11) return "WhatsApp inválido. Use o formato (11) 99999-9999.";
         if (!formData.quantity || isNaN(formData.quantity) || Number(formData.quantity) <= 0) return "Quantidade inválida.";
         return null;
     };
@@ -38,17 +46,51 @@ const BudgetForm = () => {
         setErrorMessage('');
 
         try {
+            const attribution = getAttributionFlat();
+            const payload = {
+                ...formData,
+                ...attribution,
+                submitted_at: new Date().toISOString(),
+                page_url: window.location.href,
+            };
+
             const response = await fetch("https://formspree.io/f/xreadaen", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(payload)
             });
 
             if (response.ok) {
+                const nameParts = formData.name.trim().split(/\s+/);
+                const quantity = Number(formData.quantity);
+                const userData = {
+                    email: formData.email,
+                    phone: formData.phone,
+                    first_name: nameParts[0],
+                    last_name: nameParts.slice(1).join(' '),
+                };
+                const customData = {
+                    content_name: 'Orcamento Camiseta Poliamida',
+                    content_category: formData.type,
+                    num_items: quantity,
+                    value: quantity * ESTIMATED_TICKET_BRL,
+                    currency: 'BRL',
+                    utm_source: attribution.utm_source,
+                    utm_medium: attribution.utm_medium,
+                    utm_campaign: attribution.utm_campaign,
+                    utm_content: attribution.utm_content,
+                };
+
+                track('Lead', { user_data: userData, custom_data: customData });
+
+                if (quantity >= QUALIFIED_LEAD_MIN_QTY) {
+                    trackCustomEvent('Lead_Qualificado', { user_data: userData, custom_data: customData });
+                }
+
                 setStatus('success');
-                setFormData({ name: '', email: '', type: 'assessoria', quantity: '', message: '' });
+                setFormData({ name: '', email: '', phone: '', type: 'assessoria', quantity: '', message: '' });
             } else {
                 throw new Error("Erro de resposta do servidor Formspree.");
             }
@@ -112,6 +154,19 @@ const BudgetForm = () => {
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
+                                        <label className="text-sm font-bold text-gray-400 uppercase tracking-wider">WhatsApp</label>
+                                        <input
+                                            type="tel"
+                                            name="phone"
+                                            value={formData.phone}
+                                            onChange={handleChange}
+                                            className="w-full bg-black border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors"
+                                            placeholder="(11) 99999-9999"
+                                            inputMode="tel"
+                                            autoComplete="tel"
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
                                         <label className="text-sm font-bold text-gray-400 uppercase tracking-wider">Tipo de Negócio</label>
                                         <select
                                             name="type"
@@ -124,17 +179,19 @@ const BudgetForm = () => {
                                             <option value="loja">Lojista / Revenda</option>
                                         </select>
                                     </div>
-                                    <div className="space-y-2">
-                                        <label className="text-sm font-bold text-gray-400 uppercase tracking-wider">Quantidade Estimada (Peças)</label>
-                                        <input
-                                            type="number"
-                                            name="quantity"
-                                            value={formData.quantity}
-                                            onChange={handleChange}
-                                            className="w-full bg-black border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors"
-                                            placeholder="Ex: 50"
-                                        />
-                                    </div>
+                                </div>
+
+                                <div className="space-y-2">
+                                    <label className="text-sm font-bold text-gray-400 uppercase tracking-wider">Quantidade Estimada (Peças)</label>
+                                    <input
+                                        type="number"
+                                        name="quantity"
+                                        value={formData.quantity}
+                                        onChange={handleChange}
+                                        className="w-full bg-black border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors"
+                                        placeholder="Ex: 50"
+                                        min="1"
+                                    />
                                 </div>
 
                                 <div className="space-y-2">

@@ -1,15 +1,32 @@
 import React from 'react';
+import { track } from '../services/tracking';
+import { getAttributionFlat } from '../services/attribution';
 
 const WhatsAppButton = () => {
     const phoneNumber = '553897379401';
     const message = encodeURIComponent('Olá! Vim pelo site da BKC Sports e gostaria de solicitar um orçamento.');
     const waUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
+    const handleClick = () => {
+        const attribution = getAttributionFlat();
+        track('Contact', {
+            custom_data: {
+                content_name: 'WhatsApp Float Button',
+                channel: 'whatsapp',
+                utm_source: attribution.utm_source,
+                utm_medium: attribution.utm_medium,
+                utm_campaign: attribution.utm_campaign,
+                utm_content: attribution.utm_content,
+            },
+        });
+    };
+
     return (
         <a
             href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={handleClick}
             id="whatsapp-float"
             className="fixed bottom-6 right-6 z-50 flex items-center gap-3 group"
             aria-label="Fale conosco no WhatsApp"

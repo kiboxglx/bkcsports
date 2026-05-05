@@ -2,7 +2,14 @@
   command = "npm run build"
   publish = "dist"
 
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Netlify Functions ficam em /.netlify/functions/<filename>
+# Redirect SPA NAO pode capturar essa rota, entao aplicamos redirect APENAS pra paths que nao sejam funcoes/assets.
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false

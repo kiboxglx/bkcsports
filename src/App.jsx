@@ -7,6 +7,9 @@ import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import WhatsAppButton from './components/WhatsAppButton';
 
+// Services
+import { track } from './services/tracking';
+
 // Pages
 import Home from './pages/Home';
 import About from './pages/About';
@@ -31,12 +34,24 @@ const ScrollToTop = () => {
   return null;
 };
 
+// Meta Pixel + CAPI: dispara PageView a cada mudanca de rota (SPA).
+const RouteTracker = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    track('PageView');
+  }, [pathname]);
+
+  return null;
+};
+
 function App() {
   return (
     <HelmetProvider>
       <Router>
         <div className="min-h-screen bg-black text-white selection:bg-accent selection:text-black font-sans">
           <ScrollToTop />
+          <RouteTracker />
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
